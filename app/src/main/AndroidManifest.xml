@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="jovan0042.monuments">
+
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Monuments"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".LoginActivity"
+            android:label="Sing in">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SingUpActivity"
+            android:label="Sing Up" />
+        <activity
+            android:name=".MonumentsActivity"
+            android:label="Monuments">
+        </activity>
+        <activity
+            android:name=".AddMonumentActivity"
+            android:label="Add Monument" />
+        <activity android:name=".TypesActivity"
+            android:label="Types"/>
+        <activity android:name=".ShowMonumentActivity"
+            android:label="Monument" />
+    </application>
+
+</manifest>

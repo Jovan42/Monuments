@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="jovan0042.monuments.SingUpActivity"
+    android:background="#afbaf6">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/eteMail"
+        android:hint="@string/eMail"
+        android:textSize="22sp"
+        android:singleLine="true"
+        android:inputType="textWebEmailAddress"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etPassword"
+        android:hint="@string/Password"
+        android:layout_alignParentStart="true"
+        android:textSize="22sp"
+        android:singleLine="true"
+        android:inputType="textPassword"
+        android:layout_below="@+id/eteMail"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sing_up"
+        android:id="@+id/btnSingUp"
+        android:background="#5868be"
+        android:textColor="#ffffff"
+        android:clickable="false"
+        android:textSize="18sp"
+        android:minWidth="150dp"
+        android:layout_below="@+id/etPasswordConf"
+        android:layout_centerHorizontal="true"
+        android:onClick="SingUpHandler" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etPasswordConf"
+        android:hint="@string/conf_pass"
+        android:textSize="22sp"
+        android:singleLine="true"
+        android:inputType="textPassword"
+        android:layout_below="@+id/etPassword"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
