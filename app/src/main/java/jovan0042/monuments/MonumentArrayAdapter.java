@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -26,15 +27,19 @@ public class MonumentArrayAdapter extends ArrayAdapter<Monument>{
         Monument monument = monuments.get(position);
         LayoutInflater inflater  = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 
+
         View view  = inflater.inflate(R.layout.monument_item, null);
 
         TextView tvName = (TextView) view.findViewById(R.id.tvName);
         TextView tvType = (TextView) view.findViewById(R.id.tvType);
         TextView tvUser = (TextView) view.findViewById(R.id.tvUser);
+        ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
 
         tvName.setText(monument.getName());
         tvType.setText(monument.getType());
         tvUser.setText(monument.getUser());
+        //todo: load image
+
         return view;
     }
 }

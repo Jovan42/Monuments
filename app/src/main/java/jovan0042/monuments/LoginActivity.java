@@ -18,13 +18,16 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+        //Crating Database and Users table on first run
+        SQLiteDatabase db = openOrCreateDatabase("Database", MODE_PRIVATE, null);
+
         //---------Reset app----------------//
         //db.execSQL("DROP TABLE Users");
         //db.execSQL("DROP TABLE Monuments");
         //db.execSQL("DROP TABLE Types");
 
-        //Crating Database and Users table on first run
-        SQLiteDatabase db = openOrCreateDatabase("Database", MODE_PRIVATE, null);
+
         String query = "CREATE TABLE IF NOT EXISTS Users (eMail TEXT, password TEXT, loggedIn INT DEFAULT 0)";
         db.execSQL(query);
 
