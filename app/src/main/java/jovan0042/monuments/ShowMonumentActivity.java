@@ -1,5 +1,5 @@
 package jovan0042.monuments;
-//TODO Make viewer for single monument
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 

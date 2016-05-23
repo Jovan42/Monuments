@@ -25,7 +25,7 @@ public class MonumentsActivity extends AppCompatActivity {
         SQLiteDatabase db = openOrCreateDatabase("Database", MODE_PRIVATE, null);
 
         //Create table on first run
-        String exec = "CREATE TABLE IF NOT EXISTS Monuments (name TEXT, user TEXT, type TEXT, description TEXT)";
+        String exec = "CREATE TABLE IF NOT EXISTS Monuments (name TEXT, user TEXT, type TEXT, description TEXT  )";
         db.execSQL(exec);
 
         DbHelperUsers thu = new DbHelperUsers(this);

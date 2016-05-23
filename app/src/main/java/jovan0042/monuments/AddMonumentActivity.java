@@ -3,10 +3,9 @@ package jovan0042.monuments;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +14,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.io.File;
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 import java.io.IOException;
 
 import jovan0042.monuments.dbHelpers.DbHelperMonuments;
@@ -27,7 +27,12 @@ public class AddMonumentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fresco.initialize(this);
         setContentView(R.layout.activity_add_monument);
+        SQLiteDatabase db = openOrCreateDatabase("Database", MODE_PRIVATE, null);
+        String  exec =  "CREATE TABLE IF NOT EXISTS Types (name TEXT)";
+        db.execSQL(exec);
+
     }
     //Checking if all fields are not empty, then if type exist in table
     //If there is no type in table Types user have chance to add that type throw alertDialog
@@ -37,6 +42,7 @@ public class AddMonumentActivity extends AppCompatActivity {
         EditText etDescription = (EditText) findViewById(R.id.etDescription);
         DbHelperMonuments db = new DbHelperMonuments(this);
         DbHelperUsers dbh = new DbHelperUsers(this);
+
         if(etName.getText().toString().isEmpty() || etType.getText().toString().isEmpty() || etDescription.getText().toString().isEmpty()) {
             Toast.makeText(this, "Fill all fields", Toast.LENGTH_LONG).show();
         } else {
@@ -44,14 +50,15 @@ public class AddMonumentActivity extends AppCompatActivity {
             if (dbt.doesExist(etType.getText().toString())) {
 
                 Monument m = new Monument(etName.getText().toString(), dbh.getLoggedIn(), etType.getText().toString(), etDescription.getText().toString());
-                db.add(m);
+                db.add(this, m);
 
 
-                ImageView imageView = (ImageView) findViewById(R.id.imageView);
+                //
+                ImageView imageView = (ImageView) findViewById(R.id.ivAddMon);
                 Bitmap imageBitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+                ImageFileHandler imf = new ImageFileHandler();
 
-               //Todo: save image
-
+                imf.saveToInternalStorage(imageBitmap, etName.getText().toString());
                 startActivity(new Intent(this, MonumentsActivity.class));
             } else {
                 alertDialogAddType();

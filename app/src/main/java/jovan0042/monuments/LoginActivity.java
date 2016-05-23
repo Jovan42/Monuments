@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
         //Crating Database and Users table on first run
         SQLiteDatabase db = openOrCreateDatabase("Database", MODE_PRIVATE, null);
 
+
         //---------Reset app----------------//
         //db.execSQL("DROP TABLE Users");
         //db.execSQL("DROP TABLE Monuments");
